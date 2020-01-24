@@ -1,6 +1,6 @@
 import { css } from 'emotion';
 
-import { darkBlue, lightBlue } from '@/common/colors';
+import { darkBlue, lightBlue, veryDarkBlue } from '@/common/colors';
 
 export const itemStyle = css`
   position: relative;
@@ -12,7 +12,7 @@ export const itemStyle = css`
 
   width: 400px;
   padding: 8px;
-  border: 1px solid ${darkBlue};
+  border: 1px solid ${veryDarkBlue};
   background-color: ${lightBlue};
 
   &:hover {
@@ -38,15 +38,19 @@ export const itemStyle = css`
 
 export const itemFavStyle = css`
   border-width: 2px;
-  padding-left: 16px;
+  padding-left: 12px;
 
   &:before {
     content: '';
     position: absolute;
-    left: 1px;
-    top: 1px;
-    bottom: 1px;
-    width: 8px;
-    background-color: ${darkBlue};
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 4px;
+    background-color: ${veryDarkBlue};
+  }
+
+  &:hover > &:before {
+    background-color: ${lightBlue};
   }
 `;

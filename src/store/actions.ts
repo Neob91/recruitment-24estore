@@ -6,6 +6,4 @@ export const fetchCurrencyExchange = createAsyncAction(
   'FETCH_CURRENCY_EXCHANGE_FAILURE'
 )<void, any, any>();
 
-export const toggleFavoriteCurrency = createAction('TOGGLE_FAVORITE_CURRENCY', action => {
-  return (code: number) => action({ code })
-})();
+export const toggleFavoriteCurrency = createAction('TOGGLE_FAVORITE_CURRENCY')<{ code: string }>();

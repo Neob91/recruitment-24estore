@@ -42,7 +42,7 @@ const mapState = (state: IState, ownProps: IOwnProps): IStateProps => {
 };
 
 const mapDispatch = dispatch => ({
-  onClick: (code: string) => dispatch(toggleFavoriteCurrency(code))
+  onClick: (code: string) => dispatch(toggleFavoriteCurrency({ code }))
 });
 
 export const CurrencyItem = connect(mapState, mapDispatch)(PCurrencyItem);
