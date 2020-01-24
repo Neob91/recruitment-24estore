@@ -13,6 +13,7 @@ export const itemStyle = css`
   width: 400px;
   padding: 8px;
   border: 1px solid ${veryDarkBlue};
+  border-radius: 4px;
   background-color: ${lightBlue};
 
   font-size: 14px;
@@ -41,19 +42,16 @@ export const itemStyle = css`
 
 export const itemFavStyle = css`
   border-width: 2px;
-  padding-left: 12px;
+  padding-left: 14px;
 
   &:before {
     content: '';
     position: absolute;
-    left: 0px;
-    top: 0px;
-    bottom: 0px;
-    width: 4px;
+    left: 3px;
+    top: 3px;
+    bottom: 3px;
+    width: 3px;
     background-color: ${veryDarkBlue};
-  }
-
-  &:hover > &:before {
-    background-color: ${lightBlue};
+    border-radius: 4px;
   }
 `;
