@@ -15,6 +15,9 @@ export const itemStyle = css`
   border: 1px solid ${veryDarkBlue};
   background-color: ${lightBlue};
 
+  font-size: 14px;
+  cursor: pointer;
+
   &:hover {
     background-color: ${darkBlue};
   }
