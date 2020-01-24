@@ -1,4 +1,4 @@
-import { createAsyncAction } from 'typesafe-actions';
+import { createAction, createAsyncAction } from 'typesafe-actions';
 
 export const fetchCurrencyExchange = createAsyncAction(
   'FETCH_CURRENCY_EXCHANGE_REQUEST',
@@ -6,3 +6,6 @@ export const fetchCurrencyExchange = createAsyncAction(
   'FETCH_CURRENCY_EXCHANGE_FAILURE'
 )<void, any, any>();
 
+export const toggleFavoriteCurrency = createAction('TOGGLE_FAVORITE_CURRENCY', action => {
+  return (code: number) => action({ code })
+})();
