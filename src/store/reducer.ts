@@ -4,19 +4,22 @@ import { fetchCurrencyExchange } from './actions';
 import { IState } from './types';
 
 const initialState: IState = {
-  currencyData: {},
-  currencyCodes: [],
-  currencyFavorites: [],
+  currencyItems: {},
+  currencyCodesAll: [],
+  currencyCodesFav: [],
   isFetched: false
 };
 
 export const reducer = createReducer<IState>(initialState)
   .handleAction(fetchCurrencyExchange.success, (state, action) => {
-    const { response } = action.payload;
-    const currencyCodes = [];
-    const currencyData = {};
+    const { data } = action.payload;
+    const currencyCodesAll = [];
+    const currencyItems = {};
 
-    //response.forEach();
+    data.forEach(item => {
+      currencyCodesAll.push(item.code);
+      currencyItems[item.code] = item;
+    });
 
-    return { ...state, isFetched: true, currencyData, currencyCodes };
+    return { ...state, isFetched: true, currencyItems, currencyCodesAll };
   });

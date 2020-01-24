@@ -4,14 +4,12 @@ import * as api from '@/services/api';
 import { fetchCurrencyExchange } from './actions';
 
 export function* fetchCurrencyExchangeSaga(action) {
-  const { response, error } = yield call(api.fetchCurrencyExchange);
-
-  if (error) {
-    yield put(fetchCurrencyExchange.success({ response }));
-    return;
+  try {
+    const data = yield call(api.fetchCurrencyExchange);
+    yield put(fetchCurrencyExchange.success({ data }));
+  } catch (error) {
+    yield put(fetchCurrencyExchange.failure({ error }));
   }
-
-  yield put(fetchCurrencyExchange.failure({ error }));
 }
 
 export function* saga() {

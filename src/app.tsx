@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import { CurrencyList } from '@/components';
 import { fetchCurrencyExchange } from '@/store/actions';
 
 interface IStateProps {
-  currencyData: any;
+  currencyCodesAll: string[];
+  currencyCodesFav: string[];
+  currencyItems: any;
 }
 
 interface IDispatchProps {
@@ -13,23 +16,25 @@ interface IDispatchProps {
 
 interface IProps extends IDispatchProps, IStateProps {}
 
-export const PApp: React.FC<IProps> = ({ onLoad, currencyData }) => {
+export const PApp: React.FC<IProps> = ({ onLoad, currencyCodesAll }) => {
   useEffect(() => {
     onLoad();
-  });
+  }, []);
+
   return (
     <div>
+      <CurrencyList codes={currencyCodesAll} />
     </div>
   );
 };
 
 const mapState = state => {
-  const { currencyData, currencyCodes, currencyFavorites } = state;
-  return { currencyData, currencyCodes, currencyFavorites };
+  const { currencyItems, currencyCodesAll, currencyCodesFav } = state;
+  return { currencyItems, currencyCodesAll, currencyCodesFav };
 };
 
 const mapDispatch = dispatch => ({
-  onLoad: dispatch(fetchCurrencyExchange.request())
+  onLoad: () => dispatch(fetchCurrencyExchange.request())
 });
 
 export const App = connect(mapState, mapDispatch)(PApp);

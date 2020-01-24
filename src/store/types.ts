@@ -1,6 +1,14 @@
+export interface ICurrency {
+  currency: string;
+  code: string;
+  mid: number;
+}
+
 export interface IState {
-  currencyData: any;
-  currencyCodes: string[];
-  currencyFavorites: string[];
+  currencyItems: {
+    [key: string]: ICurrency;
+  };
+  currencyCodesAll: string[];
+  currencyCodesFav: string[];
   isFetched: boolean;
 }
