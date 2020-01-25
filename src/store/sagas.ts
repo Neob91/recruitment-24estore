@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { call, put, takeEvery } from 'redux-saga/effects';
 
 import * as api from '@/services/api';
 import { fetchCurrencyExchange } from './actions';
@@ -13,5 +13,5 @@ export function* fetchCurrencyExchangeSaga(action) {
 }
 
 export function* saga() {
-  yield takeEvery(fetchCurrencyExchange.request, fetchCurrencyExchangeSaga)
+  yield takeEvery(fetchCurrencyExchange.request, fetchCurrencyExchangeSaga);
 }

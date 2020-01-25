@@ -1,16 +1,16 @@
 import { createReducer } from 'typesafe-actions';
 
 import { fetchCurrencyExchange, toggleFavoriteCurrency } from './actions';
-import { IState } from './types';
+import { StoreState } from './types';
 
-const initialState: IState = {
+const initialState: StoreState = {
   currencyItems: {},
   currencyCodesAll: [],
   currencyCodesFav: [],
-  isFetched: false
+  isFetched: false,
 };
 
-export const reducer = createReducer<IState>(initialState)
+export const reducer = createReducer<StoreState>(initialState)
   .handleAction(fetchCurrencyExchange.success, (state, action) => {
     const { data } = action.payload;
     const currencyCodesAll = [];
@@ -21,6 +21,8 @@ export const reducer = createReducer<IState>(initialState)
       currencyItems[item.code] = item;
     });
 
+    currencyCodesAll.sort();
+
     return { ...state, isFetched: true, currencyItems, currencyCodesAll };
   })
   .handleAction(toggleFavoriteCurrency, (state, action) => {
@@ -28,9 +30,10 @@ export const reducer = createReducer<IState>(initialState)
     const oldFav = state.currencyCodesFav;
     const idx = oldFav.indexOf(code);
 
-    const currencyCodesFav = idx !== -1 ?
-      oldFav.slice(0, idx).concat(oldFav.slice(idx + 1)) :
-      [ ...oldFav, code ];
+    const currencyCodesFav =
+      idx !== -1
+        ? oldFav.slice(0, idx).concat(oldFav.slice(idx + 1))
+        : [...oldFav, code];
 
     return { ...state, currencyCodesFav };
   });

@@ -5,18 +5,22 @@ import { CurrencyList, Section } from '@/components';
 import { fetchCurrencyExchange } from '@/store/actions';
 import { appStyle } from './style';
 
-interface IStateProps {
+interface StateProps {
   currencyCodesAll: string[];
   currencyCodesFav: string[];
 }
 
-interface IDispatchProps {
+interface DispatchProps {
   onLoad(): void;
 }
 
-interface IProps extends IDispatchProps, IStateProps {}
+interface Props extends DispatchProps, StateProps {}
 
-export const PApp: React.FC<IProps> = ({ onLoad, currencyCodesAll, currencyCodesFav }) => {
+export const PApp: React.FC<Props> = ({
+  onLoad,
+  currencyCodesAll,
+  currencyCodesFav,
+}) => {
   useEffect(() => {
     onLoad();
   }, []);
@@ -39,7 +43,7 @@ const mapState = state => {
 };
 
 const mapDispatch = dispatch => ({
-  onLoad: () => dispatch(fetchCurrencyExchange.request())
+  onLoad: () => dispatch(fetchCurrencyExchange.request()),
 });
 
 export const App = connect(mapState, mapDispatch)(PApp);

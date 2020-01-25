@@ -5,7 +5,11 @@
         "target": "es5",
         "sourceMap": true,
         "jsx": "react",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "paths": {
+          "@/*": ["src/*"]
+        },
+        "baseUrl": "."
     },
     "exclude": [
       "node_modules"

@@ -2,16 +2,18 @@ import React from 'react';
 
 import { CurrencyItem } from '@/components';
 
-interface IOwnProps {
+interface OwnProps {
   codes: string[];
 }
 
-interface IProps extends IOwnProps {}
+type Props = OwnProps;
 
-export const CurrencyList: React.FC<IProps> = ({ codes }) => {
+export const CurrencyList: React.FC<Props> = ({ codes }) => {
   return (
     <div>
-      {codes.map(c => <CurrencyItem key={c} code={c} />)}
+      {codes.map(c => (
+        <CurrencyItem key={c} code={c} />
+      ))}
     </div>
   );
 };

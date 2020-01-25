@@ -2,14 +2,14 @@ import React from 'react';
 
 import { sectionStyle } from './style';
 
-interface IOwnProps {
+interface OwnProps {
   title: string;
   children: React.ReactNode;
 }
 
-interface IProps extends IOwnProps {}
+type Props = OwnProps;
 
-export const Section: React.FC<IProps> = ({ title, children }) => {
+export const Section: React.FC<Props> = ({ title, children }) => {
   return (
     <div className={sectionStyle}>
       <div>{title}</div>

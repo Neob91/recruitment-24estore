@@ -3,30 +3,39 @@ import { connect } from 'react-redux';
 import { cx } from 'emotion';
 
 import { toggleFavoriteCurrency } from '@/store/actions';
-import { IState } from '@/store/types';
+import { StoreState } from '@/store/types';
 import { itemStyle, itemFavStyle } from './style';
 
-interface IOwnProps {
+interface OwnProps {
   code: string;
 }
 
-interface IStateProps {
+interface StateProps {
   name: string;
   mid: number;
   isFavorite: boolean;
 }
 
-interface IDispatchProps {
+interface DispatchProps {
   onClick(code: string): void;
 }
 
-interface IProps extends IOwnProps, IStateProps, IDispatchProps {}
+interface Props extends OwnProps, StateProps, DispatchProps {}
 
-export const PCurrencyItem: React.FC<IProps> = ({ code, name, mid, isFavorite, onClick }) => {
+export const PCurrencyItem: React.FC<Props> = ({
+  code,
+  name,
+  mid,
+  isFavorite,
+  onClick,
+}) => {
   const handleClick = useCallback(() => onClick(code), [onClick, code]);
 
   return (
-    <div className={cx(itemStyle, isFavorite ? itemFavStyle : null)} onClick={handleClick}>
+    <div
+      className={cx(itemStyle, isFavorite ? itemFavStyle : null)}
+      onClick={handleClick}
+    >
       <div>{code}</div>
       <div>{name}</div>
       <div>{mid}</div>
@@ -34,7 +43,7 @@ export const PCurrencyItem: React.FC<IProps> = ({ code, name, mid, isFavorite, o
   );
 };
 
-const mapState = (state: IState, ownProps: IOwnProps): IStateProps => {
+const mapState = (state: StoreState, ownProps: OwnProps): StateProps => {
   const { currency: name, mid } = state.currencyItems[ownProps.code];
   const isFavorite = state.currencyCodesFav.indexOf(ownProps.code) !== -1;
 
@@ -42,7 +51,7 @@ const mapState = (state: IState, ownProps: IOwnProps): IStateProps => {
 };
 
 const mapDispatch = dispatch => ({
-  onClick: (code: string) => dispatch(toggleFavoriteCurrency({ code }))
+  onClick: (code: string) => dispatch(toggleFavoriteCurrency({ code })),
 });
 
 export const CurrencyItem = connect(mapState, mapDispatch)(PCurrencyItem);
