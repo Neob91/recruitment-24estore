@@ -1,6 +1,5 @@
 import { fetchCurrencyExchange } from './actions';
 import { expectSaga } from 'redux-saga-test-plan';
-import { getType } from 'typesafe-actions';
 
 import { saga } from './sagas';
 
@@ -24,7 +23,7 @@ describe('saga', () => {
 
   test('does nothing without any action', () => {
     return expectSaga(saga)
-      .not.put.like({ action: { type: getType(fetchCurrencyExchange.success) } })
+      .not.put.like({ action: {} })
       .run();
   });
 });

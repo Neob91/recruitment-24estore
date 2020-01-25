@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrencyList renders correctly 1`] = `
+<div>
+  <Memo(Connect(Component))
+    code="EUR"
+  />
+  <Memo(Connect(Component))
+    code="USD"
+  />
+  <Memo(Connect(Component))
+    code="AUD"
+  />
+</div>
+`;

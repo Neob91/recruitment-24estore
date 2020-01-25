@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrencyItem renders correctly 1`] = `
+<div
+  className="css-13u28c6"
+  onClick={[Function]}
+>
+  <div>
+    EUR
+  </div>
+  <div>
+    Euro
+  </div>
+  <div>
+    4.2
+  </div>
+</div>
+`;
