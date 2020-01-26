@@ -5,4 +5,8 @@ export const appStyle = css`
   flex-direction: row;
 
   padding: 20px;
+
+  @media (max-width: 600px) {
+    flex-direction: column-reverse;
+  }
 `;

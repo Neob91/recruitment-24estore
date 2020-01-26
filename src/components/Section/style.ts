@@ -3,8 +3,10 @@ import { css } from 'emotion';
 import { darkBlue, lightBlue, veryDarkBlue } from '@/common/colors';
 
 export const sectionStyle = css`
-  min-width: 400px;
+  box-sizing: border-box;
+  width: 416px;
   height: 600px;
+  margin: 0 10px 10px 0;
 
   padding: 16px;
   border: 1px solid ${darkBlue};
@@ -15,7 +17,9 @@ export const sectionStyle = css`
     margin: 0 0 32px;
   }
 
-  &:not(:last-child) {
-    margin-right: 10px;
+  @media (max-width: 600px) {
+    min-width: 0;
+    width: 100%;
+    height: 240px;
   }
 `;

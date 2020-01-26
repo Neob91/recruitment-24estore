@@ -10,7 +10,7 @@ export const itemStyle = css`
   justify-content: space-between;
   box-sizing: border-box;
 
-  width: 400px;
+  width: 100%;
   padding: 8px;
   border: 1px solid ${veryDarkBlue};
   border-radius: 4px;
